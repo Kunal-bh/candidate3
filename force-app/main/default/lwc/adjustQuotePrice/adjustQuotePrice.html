@@ -1,7 +1,18 @@
 <!-- Adjust Quote Price -->
 <template>
-  <lightning-input-field
-    field-name={adjustedAmountLabel}
-    value={adjustedAmount}
-  ></lightning-input-field>
+  <section role="dialog" tabindex="-1" aria-labelledby="modal-heading-01" aria-modal="true"
+    aria-describedby="modal-content-id-1" class="slds-modal slds-fade-in-open">
+    <div class="slds-modal__container">
+      <lightning-modal-header label="Adjust quote price"></lightning-modal-header>
+      <lightning-modal-body>
+        Content goes Here 
+        <lightning-input label="Adjusted Amount" type="number" value={adjustedAmount} onchange={handleAmountChange}>
+        </lightning-input>
+      </lightning-modal-body>
+      <lightning-modal-footer>
+        <lightning-button variant="neutral" label="Cancel" title="Cancel" onclick={handleCancel}></lightning-button>
+        <lightning-button variant="brand" label="Save" title="Save Quote" onclick={handleSave}></lightning-button>
+      </lightning-modal-footer>
+    </div>
+  </section>
 </template>

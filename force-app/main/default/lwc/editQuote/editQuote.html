@@ -1,9 +1,23 @@
 <!-- Edit Quote -->
 <template>
-  <h3 class="slds-page-header__title">Welcome to quote {quoteData.name}!</h3>
-  Quote Project Ends On:
-  <lightning-formatted-date-time
-    value={quoteData.endDate}
-    time-zone="UTC"
-  ></lightning-formatted-date-time>
+  <div>
+      <lightning-spinner if:true={isLoading} alternative-text="Loading" size="medium"></lightning-spinner>
+
+          <h3 class="slds-page-header__title">Welcome to quote {quoteData.name}!</h3>
+
+          <!-- Input fields for editing start and end dates -->
+          <div class="slds-grid slds-wrap">
+              <div class="slds-col slds-size_1-of-1">
+                  <lightning-input style="width: 350px;" type="date" label="Start Date" value={startDate} onchange={handleStartDateChange} disabled={isLoading}></lightning-input>
+              </div>
+              <div class="slds-col slds-size_1-of-1">
+                  <lightning-input style="width: 350px;" type="date" label="End Date" value={endDate} onchange={handleEndDateChange} disabled={isLoading}></lightning-input>
+              </div>
+          </div>
+
+          <!-- Save button with some space -->
+          <div class="slds-m-top_medium">
+              <lightning-button variant="brand" label="Save" title="Save Quote" onclick={handleSave} disabled={isLoading}></lightning-button>
+          </div>
+  </div>
 </template>
